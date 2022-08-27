@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 require("dotenv").config({ path: ".env" });
 
 const INFURA_API_KEY_URL = process.env.INFURA_API_KEY_URL;
-const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
+const WALLET_PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.9",
@@ -21,8 +21,12 @@ const config: HardhatUserConfig = {
   networks: {
     goerli: {
       url: `https://goerli.infura.io/v3/${INFURA_API_KEY_URL}`,
-      accounts: [GOERLI_PRIVATE_KEY!],
+      accounts: [WALLET_PRIVATE_KEY!],
     },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${INFURA_API_KEY_URL}`,
+      accounts: [WALLET_PRIVATE_KEY!],      
+    }
   }
 };
 
